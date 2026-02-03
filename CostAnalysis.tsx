@@ -12,7 +12,7 @@ interface CostProps {
 const COLORS = ['#4f46e5', '#818cf8', '#a5b4fc', '#c7d2fe', '#e0e7ff'];
 
 const CostAnalysis: React.FC<CostProps> = ({ data }) => {
-  const breakdown = data?.breakdown || [];
+  const breakdown = data?.breakdown || []
   
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 animate-in fade-in duration-500">

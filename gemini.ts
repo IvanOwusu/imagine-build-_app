@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type, GenerateContentResponse } from "@google/genai";
-import { ArchitecturalDesign, DesignPreferences } from "../types";
+import { ArchitecturalDesign, DesignPreferences } from "./types";
 
 // Helper to extract base64 from Gemini response parts
 const extractImage = (response: any) => {

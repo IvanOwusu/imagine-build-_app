@@ -10,8 +10,8 @@ import {
   Layers, Move, Menu, FileCode, HelpCircle, BookOpen, Navigation, Link as LinkIcon,
   Mail, Phone, Linkedin, Twitter
 } from 'lucide-react';
-import DesignStepper from './components/DesignStepper';
-import CostAnalysis from './components/CostAnalysis';
+import DesignStepper from './DesignStepper';
+import CostAnalysis from './CostAnalysis';
 import { 
   ArchitecturalDesign, 
   DesignPreferences, 
@@ -29,7 +29,7 @@ import {
   generate3DModelFile,
   generateGLTFModelFile,
   getTutorialContent
-} from './services/gemini';
+} from './gemini';
 import { GoogleGenAI, Modality, LiveServerMessage, Blob as GenAIBlob } from '@google/genai';
 
 // --- Theme Helper ---
