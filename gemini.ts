@@ -1,13 +1,9 @@
 import type { ArchitecturalDesign, DesignPreferences } from "./types";
 type SiteDiscovery = { analysis: string; references: Array<{ title?: string; uri?: string }> };
-async function request<T>(action: string, payload: Record<string, unknown>): Promise<T> {
- const response=await fetch("/api/gemini",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action,...payload})});
- const data=await response.json().catch(()=>({}));
- if(!response.ok)throw new Error(data.error||"AI request failed. Please try again.");
- return data as T;
-}
+async function request<T>(action:string,payload:Record<string,unknown>):Promise<T>{const response=await fetch("/api/gemini",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action,...payload})});const data=await response.json().catch(()=>({}));if(!response.ok)throw new Error(data.error||"AI request failed. Please try again.");return data as T}
 export const analyzeSite=(image:string):Promise<SiteDiscovery>=>request("analyzeSite",{image});
-export const askArchitect=(message:string,history:Array<{role:string;content:string}>):Promise<{text:string;sources:string[]}>=>request("askArchitect",{message,history});
+export const askArchitect=(message:string,history:Array<{role:string;content:string}>):Promise<{text:string;sources:string[]}>=>
+ request("askArchitect",{message,history});
 export async function promptEditImage(image:string,prompt:string):Promise<string>{const r=await request<{image:string}>("promptEditImage",{image,prompt});return r.image||image}
 export async function refineRealism(design:ArchitecturalDesign):Promise<string|null>{const r=await request<{image:string}>("refineRealism",{name:design.name,style:design.preferences.style,materials:design.preferences.materials});return r.image||null}
 export const generateDesignConcept=(image:string,preferences:DesignPreferences,siteDiscovery:SiteDiscovery):Promise<ArchitecturalDesign>=>request("generateDesignConcept",{image,preferences,siteDiscovery});
