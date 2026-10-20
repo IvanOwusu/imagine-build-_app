@@ -1,20 +1,20 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Imagine Build
 
-# Run and deploy your AI Studio app
+AI-assisted architectural concept exploration. Generated designs, floor plans and cost estimates are preliminary and must be reviewed by qualified professionals before construction.
 
-This contains everything you need to run your app locally.
+## Requirements
+- Node.js 20+
+- A Gemini API key from Google AI Studio
+- Vercel CLI for local API testing (npx vercel dev)
 
-View your app in AI Studio: https://ai.studio/apps/drive/1OTSuDEqk0fzoemx0dSmvQQmsntERm-VF
+## Setup
+1. Install dependencies: npm install
+2. Configure GEMINI_API_KEY as a server-side environment variable in Vercel. Never place it in Vite define, a VITE_* variable, or browser code.
+3. Run locally with npx vercel dev so /api/gemini runs with the frontend. Plain npm run dev only starts Vite and will not serve the API function.
+4. Deploy to Vercel and set GEMINI_API_KEY in Project Settings → Environment Variables.
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Security and limitations
+- Rotate any API key that was previously committed or exposed.
+- .env* files are ignored; do not commit actual secrets.
+- The API validates image uploads and applies a basic in-memory rate limit. Add durable rate limiting and authentication/abuse controls before public production launch.
+- AI-generated images, plans and cost figures are concepts, not construction-ready documentation or professional estimates.
